@@ -1,0 +1,203 @@
+extends base
+
+block content 
+    .game-container.row
+        .card.gamePage(style="width: 18rem;")
+            img.card-img-top(src= game.background_image alt="Card image cap" id = "gameImageSrc")
+            .card-body.gamePage
+
+                h5.card-title(id = "gameTitleValue")= game.name 
+                p.card-text= game.released
+                if(game.genres.length > 1)
+                    p Genre: #{game.genres[0].name}, #{game.genres[1].name}
+                else
+                    p Genre: #{game.genres[0].name}
+                if(game.parent_platforms.length == 2)
+                    p(style="margin-bottom:none") Platforms: #{game.parent_platforms[0].platform.name}, #{game.parent_platforms[1].platform.name}
+                if(game.parent_platforms.length == 3)
+                    p(style="margin-bottom:none") Platforms: #{game.parent_platforms[0].platform.name}, #{game.parent_platforms[1].platform.name}, #{game.parent_platforms[2].platform.name}
+                if(game.parent_platforms.length == 1)
+                    p(style="margin-bottom:none") Platforms: #{game.parent_platforms[0].platform.name}
+                if(game.parent_platforms.length == 4)
+                    p(style="margin-bottom:none") Platforms: #{game.parent_platforms[0].platform.name}, #{game.parent_platforms[1].platform.name}, #{game.parent_platforms[2].platform.name}, #{game.parent_platforms[3].platform.name}
+                if(game.developers.length > 1)
+                    p Developer: #{game.developers[0].name}
+                if user
+
+                    form(method="POST" action = "/game/" + game.id + "/addgame" target= "my_iframe")
+                        button.btnAddWishlist(type="submit" class="btn btn-primary" onclick="window.location.href = '/mycollection'") Played it!
+                    iframe(style= "display:none;" name="my_iframe" src="/mycollection")
+                    a.btnCreateReview.btn.btn-outline-success(href= '/reviews/'+game.id+'/createreview') Create A Review
+                p.card-text(style='visibility:hidden' id = "gameIdValue")= game.id
+
+        .gameInfo.col-md-9
+
+            p.gameSummary(style= 'font-weight:bold;')= game.description_raw
+
+            if(screenshots.results.length == 1)
+                img.screenshot(src=screenshots.results[0].image)
+
+            if(screenshots.results.length == 2)
+                img.screenshot(src=screenshots.results[0].image)
+                img.screenshot(src=screenshots.results[1].image)
+
+            if(screenshots.results.length == 3)
+                img.screenshot(src=screenshots.results[0].image)
+                img.screenshot(src=screenshots.results[1].image)
+                img.screenshot(src=screenshots.results[2].image)
+
+            if(screenshots.results.length == 4)
+                img.screenshot(src=screenshots.results[0].image)
+                img.screenshot(src=screenshots.results[1].image)
+                img.screenshot(src=screenshots.results[2].image)
+                img.screenshot(src=screenshots.results[3].image)
+
+            if(screenshots.results.length == 5)
+                img.screenshot(src=screenshots.results[0].image)
+                img.screenshot(src=screenshots.results[1].image)
+                img.screenshot(src=screenshots.results[2].image)
+                img.screenshot(src=screenshots.results[3].image)
+                img.screenshot(src=screenshots.results[4].image)
+
+
+            if(screenshots.results.length == 6)
+                img.screenshot(src=screenshots.results[0].image)
+                img.screenshot(src=screenshots.results[1].image)
+                img.screenshot(src=screenshots.results[2].image)
+                img.screenshot(src=screenshots.results[3].image)
+                img.screenshot(src=screenshots.results[4].image)
+                img.screenshot(src=screenshots.results[5].image)
+
+
+
+    .reviews-container
+        if(reviews.length >= 1)
+            h1 Reviews for #{game.name}
+            each review in reviews 
+                .review-container.row
+                    .summary.col-md-12
+                        figure
+                            p(style= 'font-weight:bold;')= game.name
+                            h3(style= 'font-weight:bold;')= review.reviewHeader
+                            p.reviewSummaryText= review.reviewSummary
+                            p Reviewed by:  #{review.username} 
+
+
+                    if(review.gameplayScore < 5)
+                        .score.col-md-1(style='background-color: red')
+                            figure
+                                img(src="/images/icons8-game-controller-64.png")
+                                figcaption Gameplay
+                                h4= review.gameplayScore
+
+                    if(review.gameplayScore > 6)
+                        .score.col-md-1(style='background-color: green')
+                            figure
+                                img(src="/images/icons8-game-controller-64.png")
+                                figcaption Gameplay
+                                h4= review.gameplayScore
+
+                    if(review.gameplayScore == 6 || review.gameplayScore == 5)
+                        .score.col-md-1(style='background-color: #e5b73b')
+                            figure
+                                img(src="/images/icons8-game-controller-64.png")
+                                figcaption Gameplay
+                                h4= review.gameplayScore
+
+                    if(review.story < 5)
+                        .score.col-md-1(style='background-color: red')
+                            figure
+                                img(src="/images/icons8-activity-history-64.png")
+                                figcaption Story
+                                h4= review.storyScore
+
+
+                    if(review.storyScore > 6)
+                        .score.col-md-1(style='background-color: green')
+                            figure
+                                img(src="/images/icons8-activity-history-64.png")
+                                figcaption Story
+                                h4= review.storyScore
+
+
+                    if(review.storyScore == 6 || review.storyScore == 5)
+                        .score.col-md-1(style='background-color: #e5b73b')
+                            figure
+                                img(src="/images/icons8-activity-history-64.png")
+                                figcaption Story
+                                h4= review.storyScore
+
+                    if(review.graphicsScore < 5)
+                        .score.col-md-1(style='background-color: red')
+                            figure
+                                img(src="/images/icons8-picture-64.png")
+                                figcaption Visuals
+                                h4= review.graphicsScore
+
+                    if(review.graphicsScore > 6)
+                        .score.col-md-1(style='background-color: green')
+                            figure
+                                img(src="/images/icons8-picture-64.png")
+                                figcaption Visuals
+                                h4= review.graphicsScore
+
+                    if(review.graphicsScore == 6 || review.graphicsScore == 5)
+                        .score.col-md-1(style='background-color: #e5b73b')
+                            figure
+                                img(src="/images/icons8-picture-64.png")
+                                figcaption Visuals
+                                h4= review.graphicsScore
+
+                    if(review.audioScore != null)
+                        if(review.audioScore < 5)
+                            .score.col-md-1(style='background-color: red')
+                                figure
+                                    img(src="/images/icons8-sound-64.png")
+                                    figcaption Audio/Music
+                                    h4= review.audioScore
+
+                        if(review.audioScore > 6)
+                            .score.col-md-1(style='background-color: green')
+                                figure
+                                    img(src="/images/icons8-sound-64.png")
+                                    figcaption Audio/Music
+                                    h4= review.audioScore
+
+                        if(review.audioScore == 6 || review.audioScore == 5)
+                            .score.col-md-1(style='background-color: #e5b73b')
+                                figure
+                                    img(src="/images/icons8-sound-64.png")
+                                    figcaption Audio/Music
+                                    h4= review.audioScore
+
+                    if(review.performanceScore < 5)
+                        .score.col-md-1(style='background-color: red')
+                            figure
+                                img(src="/images/icons8-graph-64.png")
+                                figcaption Performance
+                                h4= review.performanceScore
+
+                    if(review.performanceScore > 6)
+                        .score.col-md-1(style='background-color: green')
+                            figure
+                                img(src="/images/icons8-graph-64.png")
+                                figcaption Performance
+                                h4= review.performanceScore
+
+                    if(review.performanceScore == 6 || review.audioScore == 5)
+                        .score.col-md-1(style='background-color: #e5b73b')
+                            figure
+                                img(src="/images/icons8-graph-64.png")
+                                figcaption Performance
+                                h4= review.performanceScore
+
+                    .score.col-md-2(style= 'border:none;')
+                        figure
+                            img(src="/images/icons8-stopwatch-64.png")
+                            figcaption Playtime
+                            h5 #{review.timePlayed} hours
+
+
+
+
+

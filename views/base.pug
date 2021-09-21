@@ -1,0 +1,334 @@
+doctype html
+html
+    head
+        title Game Review HQ | #{title}
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300i,700")
+        //- link(rel="stylesheet" href="css/style.css")
+        link(rel="shortcut icon" type="image/png" href="img/favicon.png")
+        link(href="https://fonts.googleapis.com/css2?family=Catamaran:wght@700&display=swap" rel="stylesheet")    
+        link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+
+        style. 
+            h1{
+                text-align: center;
+                font-family: 'Arial', sans-serif;
+                font-weight:bold;
+            }
+            body{
+                //-background-color: #2a2d36;
+                background-color: #2a2d30;
+                color:white;
+                padding-bottom:50px;
+            }
+
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: #2a2d25;
+                color: white;
+                text-align: center;
+                margin-top:50px;
+            }
+            .reviewSummaryText{
+                font-size:14px;
+            }
+
+            .card-body{
+                background-color: BLACK;
+                text-align:left;
+                border:2px solid white;
+                color:white;
+                margin-top: 2px;
+            }
+
+            .card.myCollection{
+                height:300px;
+            }
+
+            .card-body.gamePage{
+                background-color: BLACK;
+                text-align:left;
+                border:2px solid white;
+                color:white;
+                margin-top: 2px;
+            }
+
+            .card.reviewPage{
+                background-color: BLACK;
+                text-align:left;
+                border:2px solid white;
+                color:white;
+                height:440px;
+                margin-top: 2px;
+            }
+
+            .card-body:hover{
+                background-color: green;
+                transition: background-color 0.4s linear;
+               
+            }
+
+            .screenshot{
+                height:200px;
+                width:320px;
+                margin:5px;
+                border:2px solid white;
+                border-radius:10px;
+            }
+
+            .card-body.gamePage:hover{
+                background-color: black;
+            }
+
+            .gameInfo{
+                margin:5px;
+                text-align:left;
+            }
+
+            .gameTitle{
+                text-align:left;
+            }
+            .gameArt{
+                border-radius:4px;
+                float:left;
+            }
+
+            .game-container{
+                margin:40px;
+            }   
+
+            .btnCreateReview{
+                margin-bottom:10px;
+                color:white;
+                background-color:green;
+                border:2px solid white;
+            }
+
+            .card-container{
+                margin: 20px;
+                margin-bottom:80px;
+                text-align:center;
+            }
+
+
+            .card{
+                margin:10px;
+                height:340px;
+                width:250px;
+            }
+            .card.gamePage{
+                margin:10px;
+                height:540px;
+                width:250px;
+            }
+
+            .userList{
+                border:2px solid white;
+                margin:10px;
+           
+            }
+
+            .searchResults{
+                text-align:left;
+                margin-top:10px;
+                margin-left:30px;
+            }
+
+            .deleteReview{
+                margin:10px;
+                
+            }
+
+            p{
+                font-size: 14px;
+            }
+
+            .gameLink{
+                color:white;
+            }
+
+            .gameWebsite{
+                color:white;
+            }
+
+            .gameWebsite:hover{
+                font-weight:bold;
+
+            }
+
+            .card-img-top{
+                height:200px;
+                border:2px solid white;
+            }
+
+            .row{
+                text-align:center;
+            }
+
+            .reviews-container{
+                text-align:center;
+                margin:10px;
+            }
+            .review-container{
+                text-align:center;
+                margin: 40px;
+                background-color: #3b4044;
+                border-radius:10px;
+            }
+
+            .scores{
+                background-color: white;
+            }
+
+            .reviewer{
+                text-align:left;
+            }
+
+            figcaption {
+                font-family: 'Arial';
+            }
+
+            .loginBody, .signupBody{
+                margin-left:25%;
+                margin-top:2%;
+            }
+
+            .login-form, .signup-form{
+                border:4px solid white;
+                border-radius:10px;
+                padding:30px;
+            }
+
+            textarea{
+                resize:none;
+                radius:2px;
+            }
+
+            .numInputPlaytime{
+                width:70px;
+            }
+
+            .numInput{
+                width:50px;
+            }
+
+          
+            .scoreInput{
+                display:inline-block;
+                margin:20px;
+                margin-top:5px;
+            }
+
+            .scoreInput2{
+                display:inline-block;
+                margin:20px;
+                margin-top:5px;
+                margin-bottom:5px;
+            }   
+
+            .btnPublishReview{
+                margin-top:3px;
+            }
+
+            .score{
+                
+                //-#E74C3C red
+                //-#F1C40F yellow
+                //-#2ECC71 green
+                text-align:center;
+                justify-content:center;
+                color:white;
+                margin:10px;
+                border-radius:10px;
+            }
+
+            .summary{
+                text-align:left;
+                color:white;
+             
+            }
+
+
+           .mainHeader{
+               text-align:left;
+               margin-left:30px;
+           }
+
+            input{
+                width:10px;
+            }
+
+            h2{
+                margin-left:14px;
+                font-weight:bold;
+            }
+
+            .btnLogin{
+                margin-left:15px;
+                border-radius:10px;
+                width:120px;
+            }
+
+            .btnLogin:hover {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            .btnSignup{
+                margin-left:15px;
+                border-radius:10px;
+                width:120px;
+            }
+
+            .btnSignup:hover {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            .btnCollection,
+            .btnMyReviews
+            {
+                color: white;
+                font-weight:bold;
+                margin:30px;
+                width:200px;
+                margin-bottom:20px;
+            }
+
+            select{
+                margin-left: 28px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                background-color:black;
+                color:white;
+                border-radius:4px;
+                font-weight:bold;
+            }
+
+            .btnAddGame{
+                margin-bottom:10px;
+            }
+
+            .reviewForm{
+                margin:20px;
+                margin-bottom:50px;
+            }
+
+
+    include header
+    body 
+        block content
+            h1 Placeholder
+
+    include footer
+
+    //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js')
+    //- script(src='/js/login.js')
+    //- script(src='/js/search.js')
+    script(src='/js/bundle.js')

@@ -1,0 +1,12 @@
+extends base
+
+block content 
+    h1.mainHeader Admin User Controls
+    .card-container      
+        .row
+            each user in users 
+                .userList.col-sm-12
+                    p Username: #{user.username}
+                    p Email: #{user.email}
+                    a(href="/users/"+user._id+"/delete") Delete
+                     

@@ -1,0 +1,129 @@
+extends base
+
+block content 
+    h1.mainHeader Latest Game Reviews
+    .reviews-container
+        each review in reviews 
+            .review-container.row
+                .card(style="width: 18rem;")
+                    img.card-img-top(src= review.gameImage alt="Card image cap" id = "gameImageSrc")
+                    .card-body
+                        h5.card-title= review.gameTitle
+                .summary.col-md-9
+                    h3(style= 'font-weight:bold;')= review.gameTitle
+                    h5(style= 'font-weight:bold;')= review.reviewHeader
+                    p= review.reviewSummary
+                    p Reviewed by:  #{review.username} 
+                    figure
+                        img(src="/images/icons8-stopwatch-64.png")
+                        figcaption Playtime
+                        h5 #{review.timePlayed} hours
+                        if(review.gameplayScore < 5)
+                            .score.col-md-2(style='background-color: red')
+                                figure
+                                    img(src="/images/icons8-game-controller-64.png")
+                                    figcaption Gameplay
+                                    h4= review.gameplayScore
+
+                        if(review.gameplayScore > 6)
+                            .score.col-md-2(style='background-color: green')
+                                figure
+                                    img(src="/images/icons8-game-controller-64.png")
+                                    figcaption Gameplay
+                                    h4= review.gameplayScore
+
+                        if(review.gameplayScore == 6 || review.gameplayScore == 5)
+                            .score.col-md-2(style='background-color: #e5b73b')
+                                figure
+                                    img(src="/images/icons8-game-controller-64.png")
+                                    figcaption Gameplay
+                                    h4= review.gameplayScore
+
+                        if(review.story < 5)
+                            .score.col-md-2(style='background-color: red')
+                                figure
+                                    img(src="/images/icons8-activity-history-64.png")
+                                    figcaption Story
+                                    h4= review.storyScore
+
+
+                        if(review.storyScore > 6)
+                            .score.col-md-2(style='background-color: green')
+                                figure
+                                    img(src="/images/icons8-activity-history-64.png")
+                                    figcaption Story
+                                    h4= review.storyScore
+
+
+                        if(review.storyScore == 6 || review.storyScore == 5)
+                            .score.col-md-2(style='background-color: #e5b73b')
+                                figure
+                                    img(src="/images/icons8-activity-history-64.png")
+                                    figcaption Story
+                                    h4= review.storyScore
+
+                        if(review.graphicsScore < 5)
+                            .score.col-md-2(style='background-color: red')
+                                figure
+                                    img(src="/images/icons8-picture-64.png")
+                                    figcaption Visuals
+                                    h4= review.graphicsScore
+
+                        if(review.graphicsScore > 6)
+                            .score.col-md-2(style='background-color: green')
+                                figure
+                                    img(src="/images/icons8-picture-64.png")
+                                    figcaption Visuals
+                                    h4= review.graphicsScore
+
+                        if(review.graphicsScore == 6 || review.graphicsScore == 5)
+                            .score.col-md-2(style='background-color: #e5b73b')
+                                figure
+                                    img(src="/images/icons8-picture-64.png")
+                                    figcaption Visuals
+                                    h4= review.graphicsScore
+
+                        if(review.audioScore != null)
+                            if(review.audioScore < 5)
+                                .score.col-md-2(style='background-color: red')
+                                    figure
+                                        img(src="/images/icons8-sound-64.png")
+                                        figcaption Audio/Music
+                                        h4= review.audioScore
+
+                            if(review.audioScore > 6)
+                                .score.col-md-2(style='background-color: green')
+                                    figure
+                                        img(src="/images/icons8-sound-64.png")
+                                        figcaption Audio/Music
+                                        h4= review.audioScore
+
+                            if(review.audioScore == 6 || review.audioScore == 5)
+                                .score.col-md-2(style='background-color: #e5b73b')
+                                    figure
+                                        img(src="/images/icons8-sound-64.png")
+                                        figcaption Audio/Music
+                                        h4= review.audioScore
+
+                        if(review.performanceScore < 5)
+                            .score.col-md-2(style='background-color: red')
+                                figure
+                                    img(src="/images/icons8-graph-64.png")
+                                    figcaption Performance
+                                    h4= review.performanceScore
+
+                        if(review.performanceScore > 6)
+                            .score.col-md-2(style='background-color: green')
+                                figure
+                                    img(src="/images/icons8-graph-64.png")
+                                    figcaption Performance
+                                    h4= review.performanceScore
+
+                        if(review.performanceScore == 6 || review.audioScore == 5)
+                            .score.col-md-2(style='background-color: #e5b73b')
+                                figure
+                                    img(src="/images/icons8-graph-64.png")
+                                    figcaption Performance
+                                    h4= review.performanceScore
+
+                        

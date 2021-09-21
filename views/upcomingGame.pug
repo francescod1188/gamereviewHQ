@@ -1,0 +1,64 @@
+extends base
+
+block content 
+    .game-container.row
+        .card.gamePage(style="width: 18rem;")
+            img.card-img-top(src= game.background_image alt="Card image cap" id = "gameImageSrc")
+            .card-body.gamePage
+
+                h5.card-title(id = "gameTitleValue")= game.name 
+                p.card-text= game.released
+                if(game.genres.length > 1)
+                    p Genre: #{game.genres[0].name}, #{game.genres[1].name}
+                else
+                    p Genre: #{game.genres[0].name}
+                if(game.parent_platforms.length == 2)
+                    p(style="margin-bottom:none") Platforms: #{game.parent_platforms[0].platform.name}, #{game.parent_platforms[1].platform.name}
+                if(game.parent_platforms.length == 3)
+                    p(style="margin-bottom:none") Platforms: #{game.parent_platforms[0].platform.name}, #{game.parent_platforms[1].platform.name}, #{game.parent_platforms[2].platform.name}
+                if(game.parent_platforms.length == 1)
+                    p(style="margin-bottom:none") Platforms: #{game.parent_platforms[0].platform.name}
+                if(game.parent_platforms.length == 4)
+                    p(style="margin-bottom:none") Platforms: #{game.parent_platforms[0].platform.name}, #{game.parent_platforms[1].platform.name}, #{game.parent_platforms[2].platform.name}, #{game.parent_platforms[3].platform.name}
+                if(game.developers.length > 1)
+                    p Developer: #{game.developers[0].name}
+                p.card-text(style='visibility:hidden' id = "gameIdValue")= game.id
+                
+
+        .gameInfo.col-md-9
+
+            p.gameSummary(style= 'font-weight:bold;')= game.description_raw
+
+            if(screenshots.results.length == 1)
+                img.screenshot(src=screenshots.results[0].image)
+
+            if(screenshots.results.length == 2)
+                img.screenshot(src=screenshots.results[0].image)
+                img.screenshot(src=screenshots.results[1].image)
+
+            if(screenshots.results.length == 3)
+                img.screenshot(src=screenshots.results[0].image)
+                img.screenshot(src=screenshots.results[1].image)
+                img.screenshot(src=screenshots.results[2].image)
+
+            if(screenshots.results.length == 4)
+                img.screenshot(src=screenshots.results[0].image)
+                img.screenshot(src=screenshots.results[1].image)
+                img.screenshot(src=screenshots.results[2].image)
+                img.screenshot(src=screenshots.results[3].image)
+
+            if(screenshots.results.length == 5)
+                img.screenshot(src=screenshots.results[0].image)
+                img.screenshot(src=screenshots.results[1].image)
+                img.screenshot(src=screenshots.results[2].image)
+                img.screenshot(src=screenshots.results[3].image)
+                img.screenshot(src=screenshots.results[4].image)
+
+
+            if(screenshots.results.length == 6)
+                img.screenshot(src=screenshots.results[0].image)
+                img.screenshot(src=screenshots.results[1].image)
+                img.screenshot(src=screenshots.results[2].image)
+                img.screenshot(src=screenshots.results[3].image)
+                img.screenshot(src=screenshots.results[4].image)
+                img.screenshot(src=screenshots.results[5].image)

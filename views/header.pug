@@ -1,0 +1,117 @@
+header.header
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        a.navbar-brand(href="/") Game Review HQ
+
+        .collapse.navbar-collapse(id="navbarSupportedContent")
+            ul.navbar-nav.mr-auto
+                li.nav-item
+                    a.nav-link(href="/") Top Games
+
+                li.nav-item
+                    a.nav-link(href="/upcoming") Upcoming
+
+
+                li.nav-item
+                    a.nav-link(href="/reviews") Reviews
+
+
+                if user 
+                    li.nav-item
+                        a.nav-link.logout(href="/logout") Logout 
+                    li.nav-item
+                        a.nav-link(href="/myCollection") #{user.username}
+                    if(user.role == "admin")
+                        li.nav-item
+                            a.nav-link(href="/users") All Users
+
+                
+                else
+                    li.nav-item
+                        a.nav-link(href="/login") Login
+                    li.nav-item
+                        a.nav-link(href="/signup") Sign Up
+
+            form.searchBar.form-inline.my-2.my-lg-0
+                input.form-control.mr-sm-2(type="search", placeholder="Search for a Game", aria-label="Search" id="searchName")                  
+                button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+            
+    .sortContainer 
+            select(id="consoleSort" onchange="location = this.value;")
+                option(selected) Platform
+                option(value="/platform/PS5") PS5
+                option(value="/platform/Xbox Series X") Xbox Series X
+                option(value="/platform/Nintendo Switch") Nintendo Switch
+                option(value="/platform/PS4") PS4
+                option(value="/platform/Wii U") Wii U
+                option(value="/platform/PS3") PS3
+                option(value="/platform/Xbox 360") Xbox 360
+                option(value="/platform/Wii") Wii
+                option(value="/platform/PS2") PS2
+                option(value="/platform/Original Xbox") Original Xbox
+                option(value="/platform/GameCube") GameCube
+                option(value="/platform/PS1") PS1
+                option(value="/platform/Nintendo 64") Nintendo 64
+
+            select(id="yearSort" onchange="location = this.value;")
+                option(selected) Release Year
+                option(value="/year/2020") 2020
+                option(value="/year/2019") 2019
+                option(value="/year/2018") 2018
+                option(value="/year/2017") 2017
+                option(value="/year/2016") 2016
+                option(value="/year/2015") 2015
+                option(value="/year/2014") 2014
+                option(value="/year/2013") 2013
+                option(value="/year/2012") 2012
+                option(value="/year/2011") 2011
+                option(value="/year/2010") 2010
+                option(value="/year/2009") 2009
+                option(value="/year/2008") 2008
+                option(value="/year/2007") 2007
+                option(value="/year/2006") 2006
+                option(value="/year/2005") 2005
+                option(value="/year/2004") 2004
+                option(value="/year/2003") 2003
+                option(value="/year/2002") 2002
+                option(value="/year/2001") 2001
+                option(value="/year/2000") 2000
+                option(value="/year/1999") 1999
+                option(value="/year/1998") 1998
+                option(value="/year/1997") 1997
+                option(value="/year/1996") 1996
+                option(value="/year/1995") 1995
+                
+
+            select(id="yearSort" onchange="location = this.value;")
+                option(selected) Publisher
+                option(value="/publisher/Activision") Activision
+                option(value="/publisher/EA") EA
+                option(value="/publisher/Ubisoft") Ubisoft
+                option(value="/publisher/2K") 2K
+                option(value="/publisher/Bethesda") Bethesda
+
+            select(id="yearSort" onchange="location = this.value;")
+                option(selected) Genre
+                option(value="/genre/4/Action") Action
+                option(value="/genre/3/Adventure") Adventure
+                option(value="/genre/11/Arcade") Arcade
+                option(value="/genre/17/Card") Card
+                option(value="/genre/40/Casual") Casual
+                option(value="/genre/6/Fighting") Fighting
+                option(value="/genre/51/Indie") Indie
+                option(value="/genre/59/Massively Mulitplayer") Massively Mulitplayer
+                option(value="/genre/83/Platformer") Platformer
+                option(value="/genre/7/Puzzle") Puzzle
+                option(value="/genre/1/Racing") Racing
+                option(value="/genre/5/RPG") RPG
+                option(value="/genre/2/Shooter") Shooter
+                option(value="/genre/15/Sports") Sports
+                option(value="/genre/10/Strategy") Strategy
+
+
+
+
+
+
+
+    

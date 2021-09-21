@@ -1,0 +1,15 @@
+extends base
+
+block content 
+    .sortContainer 
+        a.btnMyReviews(href = "/reviews/myReviews") Go to My Game Reviews
+    h1.mainHeader My Wishlist
+    .card-container      
+        .row
+            each game in myWishlist 
+                .col-sm-3
+                    .card.myCollection(style="width: 18rem;")
+                        img.card-img-top.collectionImage(style= "height: 200px;" src= game.gameImage alt="Card image cap")
+                        .card-body
+                            h5.card-title(style= "margin:0px; text-align:center;height:20px;")= game.gameTitle
+                            a(href= '/game/' + game.gameId class="stretched-link")  

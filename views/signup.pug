@@ -1,0 +1,24 @@
+extends base
+block content
+    .col-md-4.signupBody
+            .signup-form
+                h2 Sign Up
+                form.signupForm
+                    .form-group
+                        .col-md-12
+                            label Username
+                            input(type="text", class="form-control", id="signupUsername",  placeholder="Username", required)
+                    .form-group
+                        .col-md-12
+                            label Email
+                            input(type="email", class="form-control", id="signupEmail",  placeholder="email@example.com", required)
+                    .form-group
+                        .col-md-12
+                            label Password
+                            input(type="password", class="form-control", id="signupPassword",  placeholder="Password", required)
+                    .form-group
+                        .col-md-12
+                            label Password
+                            input(type="password", class="form-control", id="signupConfirmPassword",  placeholder="Confirm Password", required)
+                    .form-group
+                        button.btnSignup(type="submit" class="btn btn-primary") Sign Up
