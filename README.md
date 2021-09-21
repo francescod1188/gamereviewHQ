@@ -1,2 +1,3 @@
-# Software-Development-Capstone
-This project was created by Francesco Di nardo for mohawk college software development
+# Software-Development-Capstone Game Review HQ
+This project was designed using mongoDB, node.js, express, and pug
+
