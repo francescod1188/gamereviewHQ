@@ -23,6 +23,7 @@ router.get('/year/game/:id', viewsController.getGame);
 router.get('/publisher/game/:id', viewsController.getGame);
 router.get('/genre/:genreId/game/:id', viewsController.getGame);
 router.get('/login',viewsController.getLoginForm);
+router.get('/logout',authController.logout);
 router.get('/signup',viewsController.getSignupForm);
 router.get('/forgotpassword',viewsController.getForgotPassword);
 router.get('/reviews',viewsController.getAllReviews);
