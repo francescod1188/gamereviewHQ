@@ -18,7 +18,7 @@ header.header
 
                 if user 
                     li.nav-item
-                        a.nav-link.logout(href="users/logout") Logout 
+                        a.nav-link.logout(href="/logout") Logout 
                     li.nav-item
                         a.nav-link(href="/myCollection") #{user.username}
                     if(user.role == "admin")
