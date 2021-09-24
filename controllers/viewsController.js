@@ -378,7 +378,7 @@ exports.getByYear = (req,res) => {
         });
     });
 };
-
+//Sort by genre
 exports.getByGenre = (req,res) => {
 
     gameUrl = 'https://api.rawg.io/api/games?key=4bb6861b32514c34839e293722417666&genres='+ req.params.genreId + '&dates=2016-01-01,2021-09-06'
@@ -404,9 +404,9 @@ exports.getByGenre = (req,res) => {
         });
     });
 };
-
+//Sort by publisher
 exports.getByPublisher = (req,res) => {
-    //console.log(req.params.year);
+
 
     if(req.params.publisher == "Activision"){
         gameUrl = 'https://api.rawg.io/api/games?key=4bb6861b32514c34839e293722417666&publishers=10830'

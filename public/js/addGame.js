@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+//Add gane to my collection
 export const addGame = async (gameId,gameImage,gameTitle) => {
     try{
         const res = await axios({
