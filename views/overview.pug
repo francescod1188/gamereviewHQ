@@ -7,7 +7,7 @@ block content
             each game in games
                 .col-sm-3
                     .card
-                        img.card-img-top(src= game.background_image alt="Card image cap")
+                        img.card-img-top(src= game.background_image alt=game.name)
                         .card-body
                             h5.card-title(style= "margin:0px;")= game.name 
                             p.card-text(style= "margin:0px;") Released #{game.released}
@@ -17,4 +17,4 @@ block content
                                 p(style= "margin:0px; font-weight:bold;") #{game.genres[0].name}
 
 
-                            a(href= 'game/' + game.id class="stretched-link") 
+                            a(href= 'game/' + game.id class="stretched-link" alt=game.name) 
