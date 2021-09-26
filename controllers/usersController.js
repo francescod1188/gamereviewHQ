@@ -1,3 +1,4 @@
+//User creation and functionality
 const User = require('./../models/userModel');
 const handler = require('./handlers');
 

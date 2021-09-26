@@ -1,3 +1,4 @@
+//Review functionality
 const Review = require('./../models/reviewModel');
 const User = require('./../models/userModel');
 const handler = require('./handlers');
@@ -21,7 +22,7 @@ exports.getAllReviews = async(req,res,next) => {
         });
     }
 };
-
+//Build a review using handler function
 exports.createReview = async(req,res,next) => {
     try{
         const newReview = await Review.create(req.body);
@@ -40,7 +41,7 @@ exports.createReview = async(req,res,next) => {
         });
     }
 };
-
+//Automatically assign the current user to the review being created
 exports.setUserIds = (req,res,next) => {
         req.body.user = req.user.id;
         req.body.username = req.user.username;

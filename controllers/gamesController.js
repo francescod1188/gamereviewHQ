@@ -21,9 +21,10 @@ exports.getAllGames = async(req,res,next) => {
         });
     }
 };
-
+//Add game to a collection
 exports.addGame = async(req,res,next) => {
     try{
+        //Build game model with handler create function
         const newGame = await Game.create(req.body);
 
         res.status(200).json({
@@ -41,7 +42,7 @@ exports.addGame = async(req,res,next) => {
         });
     }
 };
-
+//Access api to build a game model and add it to a users' collection
 exports.setGameUserIds = async(req,res,next) => {
     try{
         var gameUrl = 'https://api.rawg.io/api/games/'+ req.params.id + '?key=4bb6861b32514c34839e293722417666';
@@ -56,7 +57,7 @@ exports.setGameUserIds = async(req,res,next) => {
         };
         axios(config)
         .then(function (response) {
-        
+            //Build game model from api data
             req.body.gameId = req.params.id;
             req.body.gameTitle = response.data.name;
             req.body.gameImage = response.data.background_image;

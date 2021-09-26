@@ -1,3 +1,4 @@
+//This file contains all authorization functionality
 const { promisify } = require('util');
 const User = require('./../models/userModel');
 const jwt = require('jsonwebtoken');
@@ -13,6 +14,8 @@ const signToken = id => {
     });
 };
 
+//Create a token for when users sign up or login
+//Used to verify if a user is logged in so they can access user features
 const createSendToken = (user, statusCode, res) => {
     const token = signToken(user._id);
 
@@ -20,7 +23,7 @@ const createSendToken = (user, statusCode, res) => {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24*60*60*1000),
         httpOnly:true
     };
-
+    //Create cookie
     res.cookie('jwt', token, cookieOptions);
    
     res.status(statusCode).json({
@@ -43,6 +46,7 @@ exports.logout = (req,res) => {
 //Signup new user
 exports.signup = async (req,res,next ) => {
     try{
+        //Build user based on model
         const newUser = await User.create({
             username:req.body.username,
             email:req.body.email,
@@ -73,9 +77,9 @@ exports.login = async (req,res,next) => {
         if(!email || !password){
             return next(new AppError('Please provide an email and password', 400));
         }
-
+        //Check password is for the right user
         const user = await User.findOne({email:email}).select('+password');
-
+        //Error if either are incorrect
         if(!user || !await user.correctPassword(password, user.password)){
             return next(new AppError('Incorrect email or password',401));
         }
@@ -134,13 +138,13 @@ exports.protect = async(req,res,next) => {
         });
     } 
 };//exports.protect
-
+//Verify is user is logged in
 exports.isLoggedIn = async(req,res,next) => {
 
     //Check for cookie to validate logged in user
     if (req.cookies.jwt) {
         try{
-            // 1) verify token
+        // 1) verify token
         const decoded = await promisify(jwt.verify)(
             req.cookies.jwt,
             process.env.JWT_SECRET
@@ -182,19 +186,20 @@ exports.restrictTo = (...roles) => {
 //Forgot password
 exports.forgotPassword = async (req,res,next) => {
     try{
+        //Chceck if user email exists
         const user = await User.findOne({ email: req.body.email});
         if(!user){
             return next(new AppError('No user with that email address', 404));
         }
-
+        //Generate a reset token
         const resetToken = user.generatePasswordResetToken();
         await user.save({validateBeforeSave:false});
 
         //Send this password reset url to user email
         const resetURL = `${req.protocol}://${req.get('host')}/users/resetPassword/${resetToken}`;
-
+        //Add the reset url to reset password link
         const message = `Forgot your password? Submit a request for a new pass word with this link: ${resetURL}`;
-
+        //
         try{
             await sendEmail({
                 email: user.email,
@@ -239,6 +244,7 @@ exports.resetPassword = async (req,res,next) => {
     if(!user){
         return next(new AppError('Token invalid or expired', 400));
     }
+    //Set new password
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
     user.generatePasswordResetToken = undefined;

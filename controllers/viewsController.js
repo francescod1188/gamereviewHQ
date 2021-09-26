@@ -1,3 +1,4 @@
+//This file is where all API requests are made as well as where pages are rendered
 const gamesController = require('./../controllers/gamesController');
 const reviewController = require('./../controllers/reviewController');
 const userController = require('./../controllers/usersController');
@@ -15,7 +16,7 @@ const Wishlist = require('./../models/wishlistModel');
 
 var gameUrl = 'https://api.rawg.io/api/games?key=4bb6861b32514c34839e293722417666&dates=2021-03-01,2021-06-30';
 console.log(gameUrl);
-
+//Home page
 exports.getOverview = (req,res) => {
         //Make api request to get top games
         var gameUrl = 'https://api.rawg.io/api/games?key=4bb6861b32514c34839e293722417666&dates=2021-01-01,2021-09-15';
@@ -33,7 +34,7 @@ exports.getOverview = (req,res) => {
             const data = JSON.stringify(response.data.results);
             //JSON list of games
             const games = JSON.parse(data);
-
+            //Render page and use games data
             res.status(200).render('overview', {
                 title: 'Most Popular',
                 games
@@ -42,7 +43,7 @@ exports.getOverview = (req,res) => {
 }
 
 exports.getUpcoming = (req,res) => {
-    //Make api request to get top games
+    //Make api request to get upcoming games
     var gameUrl = 'https://api.rawg.io/api/games?key=4bb6861b32514c34839e293722417666&dates=2021-10-01,2022-12-31';
     //console.log(gameUrl);
     var config = {
@@ -101,7 +102,7 @@ exports.getGame = async(req,res) => {
     }
     
 };
-
+//Upcoming games
 exports.getUpcomingGame = async(req,res) => {
     try{
         //Get game infor and creenshots from api
@@ -137,6 +138,7 @@ exports.getUpcomingGame = async(req,res) => {
 //Get my game reviews
 exports.myReviews = async(req,res,next) => {
     try{
+        //Find reviews for current user
         const reviews = await Review.find({user:req.user.id}).sort({_id:-1});
         res.status(200).render('myReviews',{
             title: 'My Reviews',
@@ -172,6 +174,7 @@ exports.allUsers = async(req,res,next) => {
 //Get my games collection
 exports.myCollection = async(req,res,next) => {
     try{
+        //Find games in current users collection
         const games = await Game.find({user:req.user.id}).sort({gameTitle:1});
         res.status(200).render('myCollection',{
             title: 'My Collection',
@@ -264,9 +267,8 @@ exports.getSearch = (req,res) => {
     });
 };//exports.searchGames
 
-//Playstation = 10212,11687
-//Xbox = 20987
-//Nintendo 10681
+//Sort game by platform
+//A different url API request must be made for each console as they all have different ranges for games
 exports.getByPlatform = (req,res) => {
     //console.log(req.params.platform);
     //Make api request to find games from a specific platform

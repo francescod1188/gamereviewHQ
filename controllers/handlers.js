@@ -1,6 +1,7 @@
+//CRUD methods that can be applied to all models
 const app = require("../app");
 const AppError = require("./../utils/appError");
-
+//Get model
 exports.getOne = Model => async(req,res,next) => {
     try{
         let query = Model.findById(req.params.id);
@@ -22,7 +23,7 @@ exports.getOne = Model => async(req,res,next) => {
         });
     }
 };//exports.getOne
-
+//Delete model
 exports.deleteOne = Model => async(req,res,next) => {
     try{
         const doc = await Model.findByIdAndDelete(req.params.id);
@@ -49,7 +50,7 @@ exports.deleteOne = Model => async(req,res,next) => {
         });
     }
 };//exports.deleteOne
-
+//Update model
 exports.updateOne = Model => async(req,res,next) => {
     try{
         const doc = await Model.findByIdAndUpdate(req.params.id, req.body,{
@@ -75,7 +76,7 @@ exports.updateOne = Model => async(req,res,next) => {
     }
 };//exports.updateOne
 
-
+//Create model
 exports.createOne = Model => async(req,res,next) => {
         try{
             //console.log('review');
