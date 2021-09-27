@@ -17,6 +17,7 @@ html
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
 
         style. 
+
             h1{
                 text-align: center;
                 font-family: 'Arial', sans-serif;
@@ -27,7 +28,13 @@ html
                 background-color: #2a2d30;
                 color:white;
                 padding-bottom:50px;
-            
+                zoom:125%;
+            }
+
+            @media only screen and (max-width: 600px) {
+                body {
+                    zoom:100%;
+                }
             }
 
             .footer {
@@ -214,7 +221,7 @@ html
             textarea{
                 resize:none;
                 radius:2px;
-                width:350px;
+                width:330px;
             }
 
             .numInputPlaytime{
