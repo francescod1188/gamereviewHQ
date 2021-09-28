@@ -1,3 +1,4 @@
+//Use express server
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -16,7 +17,7 @@ app.use(cookieParser());
 app.use((req,res,next) => {
     next();
 });
-
+//Compression files for better optimization
 app.use(compression())
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -28,10 +29,3 @@ app.use('/reviews',reviewsRouter);
 
 
 module.exports = app;
-
-//CODE IDEAS
-
-// names = [];
-// for(game in games){
-//     names.push(games[game].name);
-// }

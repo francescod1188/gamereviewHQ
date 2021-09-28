@@ -1,18 +1,14 @@
+//Francesco Di Nardo-000755520
 //This file is where all API requests are made as well as where pages are rendered
 const gamesController = require('./../controllers/gamesController');
 const reviewController = require('./../controllers/reviewController');
 const userController = require('./../controllers/usersController');
 const axios = require('axios');
+//Import models
 const Review = require('./../models/reviewModel');
 const User = require('./../models/userModel');
 const Game = require('./../models/gameModel');
 const Wishlist = require('./../models/wishlistModel');
-//187 = PS5
-//18 = PS4
-//7 = Nintendo Switch
-//1 = Xbox One
-//186 = Series X
-// Upcoming 'https://api.rawg.io/api/games?key=4bb6861b32514c34839e293722417666&dates=2021-07-15,2021-12-31&ordering=-added'
 
 var gameUrl = 'https://api.rawg.io/api/games?key=4bb6861b32514c34839e293722417666&dates=2021-03-01,2021-06-30';
 console.log(gameUrl);
@@ -74,7 +70,7 @@ exports.getGame = async(req,res) => {
         const requestOne = axios.get('https://api.rawg.io/api/games/'+ req.params.id + '?key=4bb6861b32514c34839e293722417666');
         const requestTwo = axios.get('https://api.rawg.io/api/games/'+ req.params.id + '/screenshots?key=4bb6861b32514c34839e293722417666');
 
-        
+        //Get response data
         axios.all([requestOne, requestTwo]).then(axios.spread(async(...responses) => {
             //Game info
             const data = JSON.stringify(responses[0].data);
